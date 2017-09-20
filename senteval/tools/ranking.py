@@ -226,7 +226,7 @@ class ImageSentenceRankingPytorch(object):
     def trainepoch(self, trainTxt, trainImg, devTxt, devImg, nepoches=1):
         self.model.train()
         for _ in range(self.nepoch, self.nepoch + nepoches):
-            permutation = list(np.random.permutation(len(trainTxt)))
+            permutation = list(map(int, np.random.permutation(len(trainTxt))))
             all_costs = []
             for i in range(0, len(trainTxt), self.batch_size):
                 # forward

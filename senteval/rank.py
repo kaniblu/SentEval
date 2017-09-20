@@ -43,8 +43,8 @@ class ImageCaptionRetrievalEval(object):
         for split in ['train', 'valid', 'test']:
             list_sent = []
             list_img_feat = []
-            with open(os.path.join(fpath, split + '.pkl')) as f:
-                cocodata = pickle.load(f)
+            with open(os.path.join(fpath, split + '.pkl'), "rb") as f:
+                cocodata = pickle.load(f, encoding="latin1")
 
             for imgkey in range(len(cocodata['features'])):
                 assert len(cocodata['image_to_caption_ids'][imgkey]) >= 5, \
